@@ -1,0 +1,27 @@
+{
+  "name": "node2023",
+  "version": "1.0.0",
+  "description": "getting started node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": " nodemon servers.js",
+    "start:mongo": "mongod --dbpath ~/mongodb_data",
+    "start:nodeServer": "nodemon mongoServer.js",
+    "startAll:mongo": "concurrently \"mongod --dbpath ~/mongodb_data\" \"nodemon mongoServer.js\""
+  },
+  "author": "Avishai",
+  "license": "ISC",
+  "keywords": [],
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongodb": "5.7",
+    "mongoose": "^7.4.2"
+  }
+}

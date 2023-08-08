@@ -1,0 +1,29 @@
+{ 
+    "dataAnimals":[
+    {
+        "name": "Lion",
+        "src": "/images/lion.jpg",
+        "location": "Africa"
+    },
+    {
+        "name": "Tiger",
+        "src": "/images/tiger.jpg",
+        "location": "Asia"
+    },
+    {
+        "name": "Bear",
+        "src": "/images/bear.jpg",
+        "location": "North America"
+    },
+    {
+        "name": "Elephant",
+        "src": "/images/elephant.jpg",
+        "location": "Africa"
+    },
+    {
+        "name": "Penguin",
+        "src": "/images/penguin.jpg",
+        "location": "Antarctica"
+    }
+    ]
+ }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<!-- <head>
+    <title>Node.js Endpoint Consumption</title>
+    <style>
+        ul, li{
+            list-style: none;
+        }
+        figure{
+            margin: 0;
+        }
+        figure img{
+            max-width: 300px;
+            width: 100%;
+        }
+    </style>
+    <script>
+        // Function to fetch data from the Node.js server and update the placeholder element
+        async function fetchData() {
+            try {
+                const test = await fetch('http://localhost:3002/api/albums');
+                const resTest = await test.json();
+                console.log(" test ", resTest);
+
+                const response = await fetch('/api/data'); // Use the relative path for the endpoint
+                const data = await response.json();
+                console.log(" data ", data);
+                const dataPlaceholder = document.getElementById('dataPlaceholder');
+                const animals = data.data.map(animal => {
+                    return `<li>
+                        <h4>${animal.name}</h4>
+                        <figure>
+                            <img src="${animal.src}" alt="${animal.name}">
+                            <figcaption>${animal.name}</figcaption>
+                        </figure>
+                        <h6>${animal.location}</h6>
+                        </li>`;
+                });
+                const sanitizeAnimals = String(animals).replace(/,/g, ' ');
+                // remove the loading
+                dataPlaceholder.innerHTML = '';
+                dataPlaceholder.insertAdjacentHTML('afterbegin', sanitizeAnimals)
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        // Call the fetchData function when the page loads
+        fetchData();
+    </script>
+</head>
+<body>
+    <div id="dataPlaceholder">Loading data...</div>
+
+
+</body> -->
+</html>
