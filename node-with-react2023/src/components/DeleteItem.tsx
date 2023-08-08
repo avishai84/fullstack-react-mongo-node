@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../style.module.css';
 
 type DeleteItemProps = {
     acknowledged: boolean;
@@ -7,10 +8,11 @@ type DeleteItemProps = {
 };
 type ItemProps = {
   _id: string;
+  item?:string;
   onItemDeleteResponse: (data:DeleteItemProps) => typeof data;
 };
 
-const DeleteItem = ({ _id, onItemDeleteResponse }: ItemProps): JSX.Element => {
+const DeleteItem = ({ _id, onItemDeleteResponse, item }: ItemProps): JSX.Element => {
  
     const handleDelete = () => {
         fetch(`http://localhost:3002/deleteItem/${_id}`, {
@@ -38,10 +40,10 @@ const DeleteItem = ({ _id, onItemDeleteResponse }: ItemProps): JSX.Element => {
           onItemDeleteResponse({acknowledged:false, deletedCount:0, error:error.message});
         });
     };
-  
+    const capitalize = item?.charAt(0)!.toUpperCase()!+item?.slice(1);
     return (
       <div>
-        <button onClick={handleDelete}>Delete</button>
+        <button className={styles.button_red} onClick={handleDelete}>Delete {capitalize}</button>
       </div>
     );
   };

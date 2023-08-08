@@ -3,6 +3,7 @@ import Albums from './components/Albums';
 import Animals from './components/Animals';
 import Store from "./components/Store";
 import AddItem from "./components/AddItem";
+import styles from './style.module.css';
 
 // type DeleteItemProps = {acknowledged: boolean, deletedCount: number} | string;
 type ResponseReqProps = {
@@ -18,17 +19,17 @@ function App() {
     setResponseReq(response);
   };
 
-  // const handleDeleteItem = (response: ResponseReqProps) => {
-  //   // Do something with the response data
-  //   setResponseReq(response);
-  // };
 
-    return(<div >
-      <h1>Node with React</h1>
-      <AddItem onItemAdded={handleItemAdded}>
+    return(
+    <div>
+      <h1>Update Store</h1>
+      <div className={styles.store}>
+        <div className={styles.center}>
+        <AddItem onItemAdded={handleItemAdded}>
           <Store onItemAddedResponse={responseReq} />
-      </AddItem>
-    
+        </AddItem>
+      </div>
+      </div>
     </div>
   );
 }
