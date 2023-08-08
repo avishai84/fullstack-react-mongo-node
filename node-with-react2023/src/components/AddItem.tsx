@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react'
-
+import styles from '../style.module.css';
 
 type ItemProps = {
     item:string;
@@ -25,9 +25,15 @@ const AddItem:React.FC<StoreChildProps> = ({children, onItemAdded}):JSX.Element 
         // check for empty fields
         if(itemRef.current?.value === '' || priceRef.current?.value === '') return;
         e.preventDefault(); 
-        setItem({item: itemRef.current?.value as string, price: parseInt(priceRef.current?.value as string)});
+        // setItem({item: itemRef.current?.value as string, price: parseInt(priceRef.current?.value || '0')});
+        const newItem = {
+            item: itemRef.current?.value as string,
+            price: parseFloat(priceRef.current?.value || '0') // Parse as float
+        };
+        setItem(newItem);
         itemRef.current!.value = '';
         priceRef.current!.value = '';
+        itemRef.current?.focus();
     }; 
 
     useEffect(() => {
@@ -58,15 +64,14 @@ const AddItem:React.FC<StoreChildProps> = ({children, onItemAdded}):JSX.Element 
 
 
 
-  return(<div style={{ display: "flex"}}>
-
+  return(<div>
         <label>Item
             <input type="text" ref={itemRef} placeholder='item name'/>
         </label>
         <label>Price
             <input type="number" ref={priceRef} placeholder='price'/>
         </label>
-        <div><button onClick={handleItem}> Add Item</button></div>
+        <button className={styles.button} onClick={handleItem}> Add Item</button>
     {children}
   </div>);
 };

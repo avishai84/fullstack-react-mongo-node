@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import useFetch from '../hooks/useFetch';
 import DeleteItem from './DeleteItem';
+import styles from '../style.module.css';
 
 type DeleteItemProps = {
   acknowledged: boolean;
@@ -62,18 +63,18 @@ const Store = ({onItemAddedResponse}:StoreProps):JSX.Element => {
 
     const storeList = responseData?.data.map((items) => {
         const {_id, item, price} = items;
-      
+        const capitalize = item?.charAt(0)!.toUpperCase()!+item?.slice(1);
         return (
-            <li key={_id} style={{ flex: "0 0 33.33%", padding: "10px" }}>
-            <p>{item}</p>
-            <p>{price}</p>
-            <DeleteItem _id={_id} onItemDeleteResponse={(data) => deleteResponseData(data)}/>
+            <li key={_id} className={styles.li}>
+            <p>{capitalize}</p>
+            <p>${price}</p>
+            <DeleteItem item={item} _id={_id} onItemDeleteResponse={(data) => deleteResponseData(data)}/>
           </li>
         );
     })
   
-  return(<div style={{ display: "flex", flexWrap: "wrap" }}>
-     <ul>{storeList}</ul>
+  return(<div>
+     <ul className={styles.ul}>{storeList}</ul>
   </div>);
 };
 
